@@ -1,0 +1,6 @@
+{
+  "name": "PsicoDev II - Erik Erikson Estudo Guiado | FACISA UFRN",
+  "description": "Aplicativo educacional estático e offline de estudo guiado da Teoria Psicossocial de Erik Erikson para a disciplina de Psicologia do Desenvolvimento II da FACISA UFRN, com 8 estágios, adolescência em profundidade, casos clínicos, simulador de Marcia e U-MICS, quiz formativo e persistência por cookies.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

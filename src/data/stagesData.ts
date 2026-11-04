@@ -1,0 +1,298 @@
+/**
+ * @file stagesData.ts
+ * Dados dos 8 Estágios Psicossociais de Erik Erikson
+ * Fonte: Childhood and Society (1950), Identity and the Life Cycle (1959), OpenStax (2024)
+ */
+
+import { PsychosocialStage } from '../types/stage';
+
+export const STAGES_DATA: PsychosocialStage[] = [
+  {
+    id: 1,
+    name: 'Confiança versus Desconfiança',
+    agePeriod: '0 a 1 ano (Primeira Infância)',
+    crisis: {
+      positive: 'Confiança Básica',
+      negative: 'Desconfiança',
+      positiveDescription: 'Expectativa segura de que o ambiente e os cuidadores são minimamente previsíveis, calorosos e responsivos.',
+      negativeDescription: 'Sensação persistente de apreensão, medo e imprevisibilidade quanto à satisfação das necessidades vitais.',
+    },
+    virtue: 'Esperança',
+    virtueDescription: 'A crença duradoura na viabilidade dos desejos fervorosos, apesar dos impulsos sombrios e da raiva.',
+    developmentalQuestion: '“Posso confiar que minhas necessidades serão atendidas?”',
+    healthyResolution: 'Segurança básica acompanhada de cautela adaptativa (não ingenuidade cega). Capacidade de ser acalmado e de esperar com relativa calma.',
+    fragileResolution: 'Expectativa constante de rejeição ou imprevisibilidade; ou ingenuidade excessiva sem capacidade de autoproteção.',
+    overview: 'O bebê depende de cuidados contínuos e calorosos. Erikson enfatiza que a resolução positiva não elimina toda desconfiança: alguma desconfiança é adaptativa para a autopreservação no mundo.',
+    keyChallenge: 'Desenvolver a confiança nas figuras de cuidado sem perder a capacidade adaptativa de discriminar perigos.',
+    epigeneticPredecessor: 'Base somática e reflexos biológicos do recém-nascido.',
+    epigeneticSuccessor: 'Fundamento para a exploração autônoma no segundo ano de vida.',
+    color: '#0284c7', // Sky blue
+    accentColor: '#e0f2fe',
+    examples: [
+      {
+        type: 'cotidiano',
+        title: 'Choro e Retorno do Cuidador',
+        description: 'Um bebê de 8 meses chora quando a mãe se afasta para o cômodo ao lado, mas acalma-se e volta a brincar ao ouvir sua voz e vê-la retornar.',
+        analysis: 'Demonstra a emergência da confiança básica: a ausência física temporária não gera desespero desorganizado porque há expectativa de retorno.',
+      },
+      {
+        type: 'clinico_hipotetico',
+        title: 'Bebê em Situação de Negligência Grave',
+        description: 'Criança acolhida institucionalmente após negligência severa não chora ao sentir dor física e não busca contato visual com adultos.',
+        analysis: 'Indica perturbação profunda no estabelecimento do apego seguro e confiança básica; exige avaliação clínica especializada e não mera rotulação.',
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Autonomia versus Vergonha e Dúvida',
+    agePeriod: '1 a 3 anos (Primeira Meninice)',
+    crisis: {
+      positive: 'Autonomia',
+      negative: 'Vergonha e Dúvida',
+      positiveDescription: 'Exercício da vontade própria, autocontrole motor, esfincteriano e verbal com segurança.',
+      negativeDescription: 'Sentimento de inadequação, humilhação precoce e desconfiança quanto às próprias capacidades físicas e decisórias.',
+    },
+    virtue: 'Vontade',
+    virtueDescription: 'A determinação inabalável de exercer livre escolha e autocontenção.',
+    developmentalQuestion: '“Posso agir por mim mesmo?”',
+    healthyResolution: 'Autocontrole, independência motora e capacidade de escolha dentro de limites firmes e acolhedores.',
+    fragileResolution: 'Comportamentos teimosos destrutivos ou, no outro extremo, passividade excessiva, vergonha e medo paralisante de errar.',
+    overview: 'Com a marcha e a linguagem, a criança experimenta a posse ("meu!") e a recusa ("não!"). Os pais precisam oferecer opções reais sem sobrecarregar com escolhas perigosas.',
+    keyChallenge: 'Aprender a se autogovernar sem cair na humilhação pública por perdas acidentais de controle.',
+    epigeneticPredecessor: 'A segurança da confiança básica permite arriscar os primeiros passos longe do colo.',
+    epigeneticSuccessor: 'A vontade autônoma é pré-requisito para formular metas e iniciativas no estágio seguinte.',
+    color: '#059669', // Emerald
+    accentColor: '#d1fae5',
+    examples: [
+      {
+        type: 'cotidiano',
+        title: 'Escolha de Roupas',
+        description: 'A mãe oferece duas opções de camisetas: "Você quer a azul ou a listrada?". A criança escolhe a listrada com entusiasmo.',
+        analysis: 'Promove autonomia dentro de limites realistas: a criança experimenta a agência sem sofrer com decisões além de sua maturidade.',
+      },
+      {
+        type: 'clinico_hipotetico',
+        title: 'Punições Rígidas no Treino do Desfralde',
+        description: 'Uma criança é repreendida com deboche e castigos duros sempre que ocorre escape de urina, tornando-se retraída e hesitante.',
+        analysis: 'Pode consolidar sentimento precoce de vergonha corporal e dúvida paralisante sobre o próprio valor e autocontrole.',
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: 'Iniciativa versus Culpa',
+    agePeriod: '3 a 6 anos (Idade do Brinquedo / Pré-escolar)',
+    crisis: {
+      positive: 'Iniciativa',
+      negative: 'Culpa',
+      positiveDescription: 'Capacidade de idealizar planos, inventar brincadeiras de papéis e exercer liderança lúdica com curiosidade vigorosa.',
+      negativeDescription: 'Sensação paralisante de que a curiosidade natural, as perguntas ou os impulsos criativos são intrinsecamente pecaminosos ou destrutivos.',
+    },
+    virtue: 'Propósito',
+    virtueDescription: 'A coragem de conceber e perseguir metas valiosas, sem ser inibido pelo medo da punição ou culpa fantasmática.',
+    developmentalQuestion: '“Posso iniciar atividades e perseguir objetivos?”',
+    healthyResolution: 'Iniciativa espontânea combinada com consideração ética pelos limites e sentimentos alheios.',
+    fragileResolution: 'Inibição severa, medo de assumir papéis sociais ou impulsividade dominadora sem empatia.',
+    overview: 'A imaginação ganha enorme amplitude. Brincadeiras simbólicas permitem ensaiar papéis adultos (médico, professor, astronauta). A censura punitiva sufoca o espírito investigativo.',
+    keyChallenge: 'Canalizar a agressividade e a energia criativa para metas socialmente compartilháveis.',
+    epigeneticPredecessor: 'A autonomia consolidada fornece a agilidade necessária para planejar ações complexas.',
+    epigeneticSuccessor: 'O propósito prepara a criança para a dedicação às tarefas formais de aprendizagem escolar.',
+    color: '#d97706', // Amber
+    accentColor: '#fef3c7',
+    examples: [
+      {
+        type: 'cotidiano',
+        title: 'Montagem de uma "Feirinha" com Sucata',
+        description: 'Crianças de 5 anos reúnem caixas de papelão, distribuem papéis de vendedor e comprador e combinam as regras da brincadeira.',
+        analysis: 'Exercício fecundo de iniciativa social, planejamento cooperativo e ensaio lúdico de propósitos.',
+      },
+      {
+        type: 'clinico_hipotetico',
+        title: 'Repressão Sistemática à Curiosidade Sexual',
+        description: 'Criança é severamente aterrorizada com ameaças sobrenaturais ao fazer perguntas espontâneas sobre a gestação do irmão.',
+        analysis: 'Gera culpa difusa e retração da curiosidade cognitiva global, afetando o interesse escolar e exploratório.',
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: 'Produtividade (Diligência) versus Inferioridade',
+    agePeriod: '6 a 12 anos (Idade Escolar / Meninice Média)',
+    crisis: {
+      positive: 'Produtividade / Diligência',
+      negative: 'Inferioridade',
+      positiveDescription: 'Sensação realista de competência ao manejar ferramentas culturais (leitura, cálculo, esportes, artes, regras coletivas).',
+      negativeDescription: 'Sentimento crônico de incapacidade, inadequação e desvalorização comparativa frente aos colegas.',
+    },
+    virtue: 'Competência',
+    virtueDescription: 'O livre exercício da destreza e da inteligência na execução de tarefas, desobstruído por sentimentos paralisantes de inferioridade.',
+    developmentalQuestion: '“Sou capaz de aprender e realizar algo valorizado?”',
+    healthyResolution: 'Experiência realista de que "com esforço, orientação e prática, posso progredir e produzir algo que o grupo aprecia".',
+    fragileResolution: 'Desistência precoce ("não nasci para isso"), fobia escolar ou conformismo obsessivo sem criatividade.',
+    overview: 'A entrada na escola formal expõe a criança à avaliação social de suas habilidades técnicas e cognitivas. O feedback pedagógico precisa focar no processo e no esforço, não em rótulos fixos.',
+    keyChallenge: 'Dominar os instrumentos da cultura tecnológica e intelectual sem transformar erros normais em veredito de incompetência.',
+    epigeneticPredecessor: 'O propósito lúdico anterior transforma-se em disciplina produtiva com regras objetivas.',
+    epigeneticSuccessor: 'O sentimento de competência constitui a matéria-prima básica sobre a qual se assentará a identidade profissional adolescente.',
+    color: '#7c3aed', // Purple
+    accentColor: '#f3e8ff',
+    examples: [
+      {
+        type: 'cotidiano',
+        title: 'Aprender a Tocar Instrumento',
+        description: 'Após semanas errando acordes de violão, um garoto de 9 anos recebe apoio do professor, percebe a melhora e toca sua primeira canção completa.',
+        analysis: 'Reforço direto do sentimento de competência: constatação de que a perseverança gera maestria real.',
+      },
+      {
+        type: 'clinico_hipotetico',
+        title: 'Estigmatização por Dificuldade de Aprendizagem',
+        description: 'Aluno com dislexia não diagnosticada é chamado de "preguiçoso" pela equipe escolar e sofre bullying diário dos pares.',
+        analysis: 'Inferioridade generalizada que paralisa a autoeficácia e pode desencadear evasão subjetiva da aprendizagem.',
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: 'Identidade versus Confusão de Papéis',
+    agePeriod: '12 a 18 anos (Adolescência e Adultez Emergente)',
+    crisis: {
+      positive: 'Identidade do Ego',
+      negative: 'Confusão de Papéis (Difusão)',
+      positiveDescription: 'Síntese coerente entre história passada, capacidades presentes, reconhecimento social e aspirações futuras.',
+      negativeDescription: 'Sensação de fragmentação, incapacidade de escolher uma direção de vida ou assunção rígida de papéis impostos.',
+    },
+    virtue: 'Fidelidade',
+    virtueDescription: 'A capacidade de sustentar lealdades voluntariamente escolhidas a valores, causas e comunidades, mesmo diante de contradições.',
+    developmentalQuestion: '“Quem sou eu e a que posso me comprometer?”',
+    healthyResolution: 'Sentimento de continuidade autobiográfica e pertencimento, com compromissos flexíveis e autênticos.',
+    fragileResolution: 'Paralisia decisória, adesão fanática a grupos extremistas (identidade negativa) ou camuflagem constante de si.',
+    overview: 'Estágio charneira do ciclo de vida. O adolescente experimenta a moratória psicossocial: período legítimo de busca e experimentação concedido pela sociedade antes de assumir papéis adultos definitivos.',
+    keyChallenge: 'Integrar as identificações infantis em um mosaico novo e próprio, reconhecido pela comunidade.',
+    epigeneticPredecessor: 'Soma as forças de confiança, autonomia, propósito e competência desenvolvidas nos estágios prévios.',
+    epigeneticSuccessor: 'Uma identidade razoavelmente diferenciada é requisito para a intimidade afetiva sem medo de aniquilação do self.',
+    color: '#4f46e5', // Indigo
+    accentColor: '#e0e7ff',
+    examples: [
+      {
+        type: 'cotidiano',
+        title: 'Exploração de Áreas Vocacionais',
+        description: 'Uma estudante de 16 anos participa de olimpíadas científicas, grêmio estudantil e projetos voluntários antes de decidir prestar vestibular para Psicologia.',
+        analysis: 'Moratória adaptativa saudável: exploração ampla de alternativas com apropriação reflexiva antes do compromisso.',
+      },
+      {
+        type: 'clinico_hipotetico',
+        title: 'Camaleão Social com Sofrimento Intenso',
+        description: 'Jovem relata que muda completamente de religião, gostos musicais e vocação a cada mês para ser aceito, sentindo um vazio intolerável por "não saber quem é de verdade".',
+        analysis: 'Sofrimento identitário profundo que merece acolhimento clínico cuidadoso, sem ser trivializado como "apenas uma fase da adolescência".',
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: 'Intimidade versus Isolamento',
+    agePeriod: '19 a 39 anos (Jovem Adulto)',
+    crisis: {
+      positive: 'Intimidade',
+      negative: 'Isolamento',
+      positiveDescription: 'Capacidade de fundir a própria identidade com a de outro em vínculos profundos (amorosos, amizades íntimas, parcerias) sem medo de anular a si mesmo.',
+      negativeDescription: 'Distanciamento afetivo defensivo, relacionamentos superficiais e medo de ser vulnerável ou dependente.',
+    },
+    virtue: 'Amor',
+    virtueDescription: 'A mútua devoção que subjuga os antagonismos inerentes a toda convivência próxima.',
+    developmentalQuestion: '“Consigo compartilhar profundamente minha vida sem perder a mim mesmo?”',
+    healthyResolution: 'Reciprocidade afetiva, vulnerabilidade compartilhada e preservação das fronteiras individuais saudáveis.',
+    fragileResolution: 'Solidão defensiva ou relações de dependência fusional e anulação do próprio self.',
+    overview: 'Na visão eriksoniana, só quem já consolidou uma identidade segura pode se arriscar na intimidade autêntica. O isolamento surge como blindagem para evitar o risco de ser rejeitado.',
+    keyChallenge: 'Entregar-se à mútua interdependência sem transformar o parceiro em extensão de si.',
+    epigeneticPredecessor: 'Exige a fidelidade identitária construída na adolescência.',
+    epigeneticSuccessor: 'O amor íntimo e compartilhado transborda naturalmente para o cuidado da próxima geração (generatividade).',
+    color: '#e11d48', // Rose
+    accentColor: '#ffe4e6',
+    examples: [
+      {
+        type: 'cotidiano',
+        title: 'Compartilhamento de Projetos e Vulnerabilidade',
+        description: 'Dois parceiros dialogam abertamente sobre seus medos profissionais e adaptam rotinas para apoiar o crescimento mútuo sem abrir mão de amizades próprias.',
+        analysis: 'Intimidade madura: compromisso com reciprocidade e fronteiras preservadas.',
+      },
+      {
+        type: 'clinico_hipotetico',
+        title: 'Autossuficiência Rígida Defensiva',
+        description: 'Adulto de 28 anos rompe todo relacionamento assim que a outra pessoa expressa afeto genuíno, justificando que "não precisa de ninguém".',
+        analysis: 'Isolamento eriksoniano como manobra de esquiva para evitar a angústia da vulnerabilidade relacional.',
+      },
+    ],
+  },
+  {
+    id: 7,
+    name: 'Generatividade versus Estagnação',
+    agePeriod: '40 a 64 anos (Meia-idade / Adultez Média)',
+    crisis: {
+      positive: 'Generatividade',
+      negative: 'Estagnação (Autoabsorção)',
+      positiveDescription: 'Preocupação ativa em estabelecer e orientar as novas gerações por meio da parentalidade, mentoria, criação cultural, política ou trabalho comunitário.',
+      negativeDescription: 'Autoindulgência estéril, tédio existencial e fechamento exclusivo nos próprios interesses imediatos.',
+    },
+    virtue: 'Cuidado',
+    virtueDescription: 'A preocupação crescente por aquilo que foi gerado por amor, necessidade ou acaso, superando a ambivalência da obrigação.',
+    developmentalQuestion: '“O que ofereço às próximas gerações?”',
+    healthyResolution: 'Produtividade altruísta, mentoria intergeracional e senso de legado e utilidade social ampliada.',
+    fragileResolution: 'Sensação de esterilidade vital, apatia, egocentrismo amargo ou obsessão pela juventude perdida.',
+    overview: 'Generatividade não se restringe à procriação biológica: professores, artistas, ativistas e mestres de ofício expressam generatividade ao legar conhecimentos e valores à posteridade.',
+    keyChallenge: 'Assumir responsabilidade pelo destino da comunidade mais ampla além do núcleo familiar estrito.',
+    epigeneticPredecessor: 'Depende da capacidade de amar intimamente e manter compromissos estáveis.',
+    epigeneticSuccessor: 'O legado de cuidado possibilita olhar para trás com integridade na velhice.',
+    color: '#ea580c', // Orange
+    accentColor: '#ffedd5',
+    examples: [
+      {
+        type: 'cotidiano',
+        title: 'Supervisão Clínica e Mentoria',
+        description: 'Uma psicóloga com 25 anos de carreira abre grupos de supervisão voluntária para recém-formados da rede pública.',
+        analysis: 'Exercício genuíno de generatividade: investimento no futuro da profissão e cuidado com a próxima geração.',
+      },
+      {
+        type: 'clinico_hipotetico',
+        title: 'Sensação de Vazio em Executivo Bem-Sucedido',
+        description: 'Paciente aos 52 anos relata patrimônio abundante, mas crise profunda: "se eu morrer hoje, nada do que fiz ajudou ninguém além do meu bolso".',
+        analysis: 'Conflito clássico de estagnação: o sucesso econômico individual não substitui a necessidade psicológica de transcendência gerativa.',
+      },
+    ],
+  },
+  {
+    id: 8,
+    name: 'Integridade versus Desespero',
+    agePeriod: '65 anos em diante (Maturidade Tardia / Velhice)',
+    crisis: {
+      positive: 'Integridade do Ego',
+      negative: 'Desespero',
+      positiveDescription: 'Aceitação serena e realista da própria trajetória de vida com suas luzes e sombras, e reconciliação com a finitude inevitável.',
+      negativeDescription: 'Sensação amarga de que a vida foi desperdiçada, o tempo esgotou e não há mais chance de recomeçar.',
+    },
+    virtue: 'Sabedoria',
+    virtueDescription: 'A preocupação desapegada e reflexiva com a própria vida em face da própria morte.',
+    developmentalQuestion: '“Minha vida pode ser aceita como uma história com sentido?”',
+    healthyResolution: 'Integração serena da narrativa biográfica, aceitação da finitude e compaixão pela própria imperfeição e pela alheia.',
+    fragileResolution: 'Amargura, ruminação depressiva crônica sobre "o que poderia ter sido" e terror paralisante da morte.',
+    overview: 'O último estágio não exige que a pessoa tenha tido uma vida imaculada; exige a capacidade de aceitar a própria vida histórica como inevitável e digna de ter sido vivida.',
+    keyChallenge: 'Encontrar ordem existencial e reconciliação autobiográfica diante do declínio físico e da proximidade do fim.',
+    epigeneticPredecessor: 'Coroa os sete estágios prévios, integrando esperança, vontade, propósito, competência, fidelidade, amor e cuidado.',
+    epigeneticSuccessor: 'Fechamento do ciclo vital e transmissão de sabedoria aos mais jovens.',
+    color: '#0d9488', // Teal
+    accentColor: '#ccfbf1',
+    examples: [
+      {
+        type: 'cotidiano',
+        title: 'Reconto Biográfico aos Netos',
+        description: 'Um senhor de 78 anos narra suas vitórias e seus tropeços com humor, reconhecendo as dores da vida sem desespero.',
+        analysis: 'Integridade do ego manifesta: a biografia é apropriada como coerente e valiosa em sua humanidade.',
+      },
+      {
+        type: 'clinico_hipotetico',
+        title: 'Desespero e Ruminação Amarga',
+        description: 'Idosa em internação asilar recusa qualquer contato, afirmando repetidamente que "errou em tudo e agora não resta tempo para nada".',
+        analysis: 'Polo do desespero eriksoniano: ausência de integração autobiográfica, exigindo escuta analítica compassiva e suporte psicossocial.',
+      },
+    ],
+  },
+];

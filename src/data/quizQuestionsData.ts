@@ -1,0 +1,418 @@
+/**
+ * @file quizQuestionsData.ts
+ * Questões de fixação para autoavaliação com gabarito comentado
+ * Alinhadas ao conteúdo da disciplina Psicologia do Desenvolvimento II (FACISA UFRN)
+ */
+
+import { QuizQuestion } from '../types/quiz';
+
+export const QUIZ_QUESTIONS_DATA: QuizQuestion[] = [
+  {
+    id: 'q-1',
+    topic: 'estagios_geral',
+    topicTitle: 'Fundamentos Epigenéticos',
+    question: 'Por que a teoria de Erik Erikson é denominada “psicossocial”, diferenciando-se fundamentalmente da abordagem psicanalítica freudiana clássica?',
+    options: [
+      {
+        id: 'opt-q1-a',
+        text: 'Porque descarta os processos inconscientes e foca unicamente no comportamento observável condicionado.',
+        isCorrect: false,
+        rationale: 'Incorreto. Erikson era psicanalista de formação (analisado por Anna Freud); ele não descartou o inconsciente nem aderiu ao behaviorismo estrito.',
+      },
+      {
+        id: 'opt-q1-b',
+        text: 'Porque amplia o desenvolvimento por todo o ciclo vital e atribui peso decisivo às interações sociais, culturais e históricas.',
+        isCorrect: true,
+        rationale: 'Correto! Erikson rompeu com a ênfase exclusivamente pulsional e infantil de Freud, demonstrando que a personalidade evolui da infância à velhice em constante diálogo com as instituições sociais e a cultura.',
+      },
+      {
+        id: 'opt-q1-c',
+        text: 'Porque propõe que a personalidade é imutável após os primeiros cinco anos de vida.',
+        isCorrect: false,
+        rationale: 'Incorreto. Essa era justamente a tese freudiana clássica que Erikson superou ao estender o desenvolvimento por 8 estágios até a velhice.',
+      },
+      {
+        id: 'opt-q1-d',
+        text: 'Porque defende que o desenvolvimento biológico independe de qualquer estímulo ambiental.',
+        isCorrect: false,
+        rationale: 'Incorreto. O princípio epigenético pressupõe um plano biológico que só se realiza em interação com o ambiente social propício.',
+      },
+    ],
+    literatureReference: 'Erikson (1950) Childhood and Society; OpenStax Psychology 2e (2024).',
+    difficulty: 'facil',
+  },
+  {
+    id: 'q-2',
+    topic: 'estagios_geral',
+    topicTitle: 'O Conceito de Crise Psicossocial',
+    question: 'Em termos eriksonianos rigorosos, o que significa a palavra “crise” em cada um dos oito estágios do ciclo vital?',
+    options: [
+      {
+        id: 'opt-q2-a',
+        text: 'Um surto psicopatológico ou emergência psiquiátrica que requer internação obrigatória.',
+        isCorrect: false,
+        rationale: 'Incorreto. Em Erikson, crise não é sinônimo de transtorno mental ou colapso psiquiátrico.',
+      },
+      {
+        id: 'opt-q2-b',
+        text: 'Uma tensão desenvolvimental normativa entre duas exigências e demandas opostas que solicita uma nova síntese adaptativa.',
+        isCorrect: true,
+        rationale: 'Correto! Trata-se de um ponto de virada (turning point) crucial, no qual o indivíduo enfrenta demandas conflitantes cuja resolução equilibrada gera uma virtude ou força do ego.',
+      },
+      {
+        id: 'opt-q2-c',
+        text: 'A eliminação completa e definitiva do polo negativo da díade.',
+        isCorrect: false,
+        rationale: 'Incorreto. Erikson ressalta que o polo negativo nunca é 100% extinto (ex.: alguma desconfiança é necessária para autopreservação).',
+      },
+      {
+        id: 'opt-q2-d',
+        text: 'Um teste cronológico que, se reprovado aos 18 anos, condena permanentemente os estágios seguintes.',
+        isCorrect: false,
+        rationale: 'Incorreto. A teoria contemporânea e o próprio Erikson destacam que conflitos antigos podem ser revisitados e retrabalhados posteriormente.',
+      },
+    ],
+    literatureReference: 'Erikson (1968) Identity: Youth and Crisis.',
+    difficulty: 'facil',
+  },
+  {
+    id: 'q-3',
+    topic: 'estagios_geral',
+    topicTitle: 'Estágios da Infância e Idade Escolar',
+    question: 'Qual é a crise central e a virtude correspondente ao período escolar (~6 a 12 anos), no qual a criança ingressa no aprendizado formal de ferramentas culturais?',
+    options: [
+      {
+        id: 'opt-q3-a',
+        text: 'Iniciativa versus Culpa — Virtude: Propósito.',
+        isCorrect: false,
+        rationale: 'Incorreto. Este é o 3º estágio, correspondente à idade pré-escolar (3 a 6 anos).',
+      },
+      {
+        id: 'opt-q3-b',
+        text: 'Autonomia versus Vergonha — Virtude: Vontade.',
+        isCorrect: false,
+        rationale: 'Incorreto. Este é o 2º estágio (1 a 3 anos).',
+      },
+      {
+        id: 'opt-q3-c',
+        text: 'Produtividade (Diligência) versus Inferioridade — Virtude: Competência.',
+        isCorrect: true,
+        rationale: 'Correto! No 4º estágio, o desafio primordial é aprender e produzir algo valorizado pela cultura (leitura, escrita, cálculo, esportes), emergindo o sentimento de competência.',
+      },
+      {
+        id: 'opt-q3-d',
+        text: 'Identidade versus Confusão de Papéis — Virtude: Fidelidade.',
+        isCorrect: false,
+        rationale: 'Incorreto. Este é o 5º estágio, típico da adolescência (12 a 18 anos).',
+      },
+    ],
+    literatureReference: 'OpenStax (2024); Erikson (1950).',
+    difficulty: 'facil',
+  },
+  {
+    id: 'q-4',
+    topic: 'adolescencia_identidade',
+    topicTitle: 'A Virtude da Fidelidade',
+    question: 'Erikson nomeou a virtude associada a uma resolução saudável do 5º estágio (Identidade × Confusão de Papéis) como Fidelidade. O que significa essa força do ego?',
+    options: [
+      {
+        id: 'opt-q4-a',
+        text: 'Fidelidade conjugal estrita em casamentos monogâmicos.',
+        isCorrect: false,
+        rationale: 'Incorreto. A fidelidade aqui não é um conceito moral conjugal, mas uma capacidade psicológica desenvolvimental.',
+      },
+      {
+        id: 'opt-q4-b',
+        text: 'A capacidade de sustentar lealdades voluntárias a valores, causas, amizades e projetos de vida sem perder a continuidade do self.',
+        isCorrect: true,
+        rationale: 'Correto! É a habilidade de empenhar a própria palavra e sustentar compromissos com autenticidade, resistindo à conformidade vazia ou à fragmentação.',
+      },
+      {
+        id: 'opt-q4-c',
+        text: 'Submissão cega e irrestrita à ideologia de um líder carismático.',
+        isCorrect: false,
+        rationale: 'Incorreto. Erikson caracterizou a adesão cega e fanática como sintoma de confusão de identidade e busca desesperada por abrigo contra a angústia.',
+      },
+      {
+        id: 'opt-q4-d',
+        text: 'A certeza absoluta de nunca mais mudar de opinião profissional.',
+        isCorrect: false,
+        rationale: 'Incorreto. A fidelidade eriksoniana convive com a flexibilidade cognitiva e a revisão de rumos.',
+      },
+    ],
+    literatureReference: 'Erikson (1968) Identity: Youth and Crisis.',
+    difficulty: 'medio',
+  },
+  {
+    id: 'q-5',
+    topic: 'marcia_status',
+    topicTitle: 'Paradigma de James Marcia',
+    question: 'Em um estudo de orientação vocacional, uma aluna de 16 anos afirma: “Sempre soube que faria Odontologia, porque minha mãe e meu avô têm clínica na cidade e sempre me disseram que esse seria meu futuro”. Ela nunca pesquisou outras áreas e não demonstra dúvidas. Segundo James Marcia (1966), esse perfil classifica-se como:',
+    options: [
+      {
+        id: 'opt-q5-a',
+        text: 'Moratória (Moratorium).',
+        isCorrect: false,
+        rationale: 'Incorreto. Moratória exige alta exploração ativa de alternativas em andamento, o que a aluna não fez.',
+      },
+      {
+        id: 'opt-q5-b',
+        text: 'Identidade Alcançada (Identity Achievement).',
+        isCorrect: false,
+        rationale: 'Incorreto. A identidade alcançada pressupõe que o compromisso foi precedido por exploração prévia reflexiva e questionamento de alternativas.',
+      },
+      {
+        id: 'opt-q5-c',
+        text: 'Pré-fechamento (Foreclosure).',
+        isCorrect: true,
+        rationale: 'Correto! Pré-fechamento é caracterizado por baixa exploração e alto compromisso. O indivíduo assume planos herdados sem apropriação pessoal crítica.',
+      },
+      {
+        id: 'opt-q5-d',
+        text: 'Difusão da Identidade (Identity Diffusion).',
+        isCorrect: false,
+        rationale: 'Incorreto. Difusão é caracterizada por baixo compromisso e baixa exploração.',
+      },
+    ],
+    literatureReference: 'Marcia (1966) Development and validation of ego-identity status.',
+    difficulty: 'medio',
+  },
+  {
+    id: 'q-6',
+    topic: 'marcia_status',
+    topicTitle: 'Moratória Psicossocial',
+    question: 'Por que o estado de Moratória NÃO deve ser considerado sinônimo de fracasso desenvolvimental ou indecisão patológica?',
+    options: [
+      {
+        id: 'opt-q6-a',
+        text: 'Porque experimentar, investigar alternativas e suspender compromissos definitivos é um processo normativo e adaptativo na adolescência.',
+        isCorrect: true,
+        rationale: 'Correto! A moratória concede ao jovem o tempo institucional e psicológico necessário para integrar suas identificações antes de assumir papéis adultos irreversíveis.',
+      },
+      {
+        id: 'opt-q6-b',
+        text: 'Porque todas as pessoas em moratória tornam-se automaticamente gênios criativos.',
+        isCorrect: false,
+        rationale: 'Incorreto. Moratória não garante genialidade, mas fornece espaço para desenvolvimento sadio.',
+      },
+      {
+        id: 'opt-q6-c',
+        text: 'Porque moratória significa não ter nenhuma responsabilidade ética no convívio social.',
+        isCorrect: false,
+        rationale: 'Incorreto. Moratória não é salvo-conduto para transgressões irresponsáveis, mas sim exploração de papéis sociais.',
+      },
+      {
+        id: 'opt-q6-d',
+        text: 'Porque Erikson afirmava que quem decide rápido na adolescência sempre desenvolve transtorno mental grave.',
+        isCorrect: false,
+        rationale: 'Incorreto. Erikson nunca fez tal afirmação determinista.',
+      },
+    ],
+    literatureReference: 'Erikson (1956); Marcia (1966); SciELO Brasil (2018).',
+    difficulty: 'facil',
+  },
+  {
+    id: 'q-7',
+    topic: 'umics_ciclo',
+    topicTitle: 'Modelo U-MICS e Ciclo Duplo',
+    question: 'Quais são as três dimensões constitutivas da escala U-MICS (Crocetti et al., 2008), que superam a visão estática de identidade como uma conquista pontual única?',
+    options: [
+      {
+        id: 'opt-q7-a',
+        text: 'Compromisso, Exploração em Profundidade e Reconsideração do Compromisso.',
+        isCorrect: true,
+        rationale: 'Correto! A U-MICS mede esses 3 processos contínuos (5 itens de compromisso, 5 de exploração em profundidade e 3 de reconsideração), captando a dinâmica de ciclos identitários ao longo da vida.',
+      },
+      {
+        id: 'opt-q7-b',
+        text: 'Ansiedade, Depressão e Desesperança.',
+        isCorrect: false,
+        rationale: 'Incorreto. Esses são construtos psicopatológicos, não dimensões do modelo de processos de identidade.',
+      },
+      {
+        id: 'opt-q7-c',
+        text: 'Inteligência, Memória Autobiográfica e Autoestima.',
+        isCorrect: false,
+        rationale: 'Incorreto. São funções cognitivas gerais, não as três dimensões da U-MICS.',
+      },
+      {
+        id: 'opt-q7-d',
+        text: 'Confiança, Autonomia e Iniciativa.',
+        isCorrect: false,
+        rationale: 'Incorreto. Esses são os três primeiros estágios do modelo clássico de Erikson.',
+      },
+    ],
+    literatureReference: 'Crocetti, Rubini & Meeus (2008); Crocetti et al. (2015).',
+    difficulty: 'medio',
+  },
+  {
+    id: 'q-8',
+    topic: 'metanalise_potterton',
+    topicTitle: 'Evidências e Saúde Mental (Potterton et al., 2022)',
+    question: 'A revisão sistemática e metanálise longitudinal de Potterton et al. (2022) avaliou 20 estudos com 13.787 participantes sobre identidade e transtornos socioemocionais. Qual foi o principal resultado e a cautela epistemológica destacada pelos autores?',
+    options: [
+      {
+        id: 'opt-q8-a',
+        text: 'Ficou comprovado com ensaios clínicos controlados que resolver o 5º estágio cura a depressão maior.',
+        isCorrect: false,
+        rationale: 'Incorreto. Não existem ensaios clínicos com essa comprovação e a relação não é de cura direta nem linear.',
+      },
+      {
+        id: 'opt-q8-b',
+        text: 'As metarregressões não demonstraram que mudanças na identidade previssem significativamente mudanças em depressão ou ansiedade, e nenhum estudo teve qualidade metodológica "boa".',
+        isCorrect: true,
+        rationale: 'Correto! Embora haja associação descritiva, os dados longitudinais não demonstram relação causal simples. A identidade é clinicamente relevante, mas não funciona como causa unívoca de psicopatologia.',
+      },
+      {
+        id: 'opt-q8-c',
+        text: 'A confusão de identidade mostrou-se 100% protetora contra sintomas depressivos na adolescência tardia.',
+        isCorrect: false,
+        rationale: 'Incorreto. Confusão de identidade correlaciona-se com maior sofrimento subjetivo, nunca proteção.',
+      },
+      {
+        id: 'opt-q8-d',
+        text: 'Todos os estudos incluídos foram classificados com nível ouro de rigor metodológico.',
+        isCorrect: false,
+        rationale: 'Incorreto. 55% foram classificados como "regular" (fair) e 45% como "fraco" (poor); 0% com qualidade "boa".',
+      },
+    ],
+    literatureReference: 'Potterton et al. (2022) Journal of Youth and Adolescence.',
+    difficulty: 'avancado',
+  },
+  {
+    id: 'q-9',
+    topic: 'avaliacao_satepsi',
+    topicTitle: 'Normas do CFP e SATEPSI',
+    question: 'Um psicólogo recém-formado traduziu uma escala norte-americana de identidade de 10 itens encontrada na internet e deseja aplicá-la em um laudo pericial oficial para atestar a "maturidade psicológica" de um adolescente. De acordo com a Resolução CFP nº 31/2022 e as regras do SATEPSI:',
+    options: [
+      {
+        id: 'opt-q9-a',
+        text: 'A conduta é perfeitamente ética e válida, desde que o psicólogo cite o nome de Erik Erikson no rodapé.',
+        isCorrect: false,
+        rationale: 'Incorreto. Citar teóricos clássicos não substitui os requisitos de validação psicométrica exigidos pelo Conselho.',
+      },
+      {
+        id: 'opt-q9-b',
+        text: 'A conduta viola as normas ético-profissionais do CFP, pois instrumentos privativos de avaliação psicológica exigem parecer FAVORÁVEL prévio no SATEPSI.',
+        isCorrect: true,
+        rationale: 'Correto! Instrumentos de pesquisa ou fontes complementares não podem ser utilizados como testes psicológicos privativos oficiais para emitir laudos sem validação e aprovação expressa no SATEPSI (Resolução CFP nº 31/2022).',
+      },
+      {
+        id: 'opt-q9-c',
+        text: 'O SATEPSI não possui autoridade sobre testes de psicologia do desenvolvimento, apenas sobre psicologia organizacional.',
+        isCorrect: false,
+        rationale: 'Incorreto. O SATEPSI abrange todo o exercício profissional do psicólogo em território nacional.',
+      },
+      {
+        id: 'opt-q9-d',
+        text: 'Qualquer escala publicada em artigo estrangeiro tem aprovação automática de aplicação profissional no Brasil.',
+        isCorrect: false,
+        rationale: 'Incorreto. Exige-se estudos normativos e psicométricos na população brasileira submetidos ao CFP.',
+      },
+    ],
+    literatureReference: 'Conselho Federal de Psicologia - Resolução CFP nº 31/2022; SATEPSI.',
+    difficulty: 'medio',
+  },
+  {
+    id: 'q-10',
+    topic: 'clinica_e_contexto',
+    topicTitle: 'Classe Social e Moratória',
+    question: 'Ao analisar a teoria de Erikson à luz da realidade social brasileira (Oliveira, 2006), qual é uma das principais críticas contemporâneas à universalização do conceito de moratória psicossocial?',
+    options: [
+      {
+        id: 'opt-q10-a',
+        text: 'A moratória pressupõe condições materiais e econômicas para prolongar o estudo e postergar o trabalho, privilégio indisponível a muitos jovens da classe trabalhadora.',
+        isCorrect: true,
+        rationale: 'Correto! Jovens de periferia e áreas rurais precisam muitas vezes assumir responsabilidades de sustento e cuidado familiar muito precocemente. Rotular escolhas rápidas como "pré-fechamento imaturo" ignora a desigualdade material estrutural.',
+      },
+      {
+        id: 'opt-q10-b',
+        text: 'Que Erikson escreveu sua teoria baseado exclusivamente em jovens camponeses da América Latina.',
+        isCorrect: false,
+        rationale: 'Incorreto. Erikson formulou a teoria a partir de observações nos Estados Unidos e Europa de meados do século XX.',
+      },
+      {
+        id: 'opt-q10-c',
+        text: 'Que adolescentes de famílias de baixa renda não possuem vida psíquica nem identidade.',
+        isCorrect: false,
+        rationale: 'Incorreto. Todos os seres humanos constroem identidade; o que varia são as arenas e recursos materiais disponíveis para a moratória.',
+      },
+      {
+        id: 'opt-q10-d',
+        text: 'Que a escola brasileira é a única instituição responsável pelo desenvolvimento integral dos adolescentes.',
+        isCorrect: false,
+        rationale: 'Incorreto. O desenvolvimento é multideterminado por família, território, trabalho e políticas públicas.',
+      },
+    ],
+    literatureReference: 'Oliveira (2006) Psicologia em Estudo; SciELO Brasil.',
+    difficulty: 'medio',
+  },
+  {
+    id: 'q-11',
+    topic: 'clinica_e_contexto',
+    topicTitle: 'Redes Sociais e Identidade Digital',
+    question: 'A recente revisão sistemática de Avci, Baams & Kretschmer (com 32 estudos e 19.658 participantes) avaliou o impacto das redes sociais no desenvolvimento da identidade adolescente. O que a pesquisa empírica concluiu sobre o "tempo de tela"?',
+    options: [
+      {
+        id: 'opt-q11-a',
+        text: 'O número exato de minutos de uso diário é o único preditor de transtorno de identidade.',
+        isCorrect: false,
+        rationale: 'Incorreto. O tempo de tela isoladamente é uma métrica grosseira e fraca para explicar a formação da identidade.',
+      },
+      {
+        id: 'opt-q11-b',
+        text: 'A qualidade do uso (apresentação autêntica versus comparação social e dependência de aprovação externa) é muito mais informativa e relevante que o tempo bruto de conexão.',
+        isCorrect: true,
+        rationale: 'Correto! Participação ativa e comunicação com comunidades de apoio relacionam-se a exploração saudável, enquanto comparações tóxicas relacionam-se a sofrimento identitário.',
+      },
+      {
+        id: 'opt-q11-c',
+        text: 'A internet eliminou totalmente a influência das famílias e das escolas sobre os adolescentes modernos.',
+        isCorrect: false,
+        rationale: 'Incorreto. Família e escola continuam sendo matrizes vitais de referência e ancoragem.',
+      },
+      {
+        id: 'opt-q11-d',
+        text: 'Adolescentes que utilizam redes sociais nunca conseguem atingir a virtude da fidelidade.',
+        isCorrect: false,
+        rationale: 'Incorreto. As redes podem ser instrumentos de exploração de causas sociais e pertencimento coletivo virtuoso.',
+      },
+    ],
+    literatureReference: 'Avci, Baams & Kretschmer (2024/2025) Adolescent Research Review.',
+    difficulty: 'medio',
+  },
+  {
+    id: 'q-12',
+    topic: 'estagios_geral',
+    topicTitle: 'Estágios da Vida Adulta e Velhice',
+    question: 'Um profissional de 55 anos dedica parte do seu tempo livre para treinar jovens aprendizes de sua comunidade e articular hortas comunitárias em seu bairro. Ele expressa a virtude da teoria eriksoniana correspondente a qual estágio?',
+    options: [
+      {
+        id: 'opt-q12-a',
+        text: '7º Estágio: Generatividade versus Estagnação — Virtude: Cuidado.',
+        isCorrect: true,
+        rationale: 'Correto! A generatividade envolve a preocupação com as futuras gerações e a produção de um legado de cuidado social, superando a autoabsorção egocêntrica.',
+      },
+      {
+        id: 'opt-q12-b',
+        text: '6º Estágio: Intimidade versus Isolamento — Virtude: Amor.',
+        isCorrect: false,
+        rationale: 'Incorreto. A intimidade foca na fusão afetiva de identidades em parcerias recíprocas (jovem adulto).',
+      },
+      {
+        id: 'opt-q12-c',
+        text: '8º Estágio: Integridade versus Desespero — Virtude: Sabedoria.',
+        isCorrect: false,
+        rationale: 'Incorreto. A integridade refere-se à reconciliação retrospectiva com a própria biografia e finitude na velhice.',
+      },
+      {
+        id: 'opt-q12-d',
+        text: '1º Estágio: Confiança versus Desconfiança — Virtude: Esperança.',
+        isCorrect: false,
+        rationale: 'Incorreto. Este é o estágio inicial do primeiro ano de vida.',
+      },
+    ],
+    literatureReference: 'Erikson (1982) The Life Cycle Completed.',
+    difficulty: 'facil',
+  },
+];
