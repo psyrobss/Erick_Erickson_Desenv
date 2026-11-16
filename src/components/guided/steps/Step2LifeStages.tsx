@@ -210,9 +210,22 @@ export const Step2LifeStages: React.FC<Step2LifeStagesProps> = ({
               <span>Concluir & Ir para o Estágio {currentStage.id + 1}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
+          ) : !isCurrentStageCompleted ? (
+            <button
+              type="button"
+              onClick={() => {
+                onToggleCompleteTopic(stageTopicId);
+                soundService.playSuccess();
+                onNextStep();
+              }}
+              className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer ml-auto"
+            >
+              <span>Concluir Estágio 8 & Ir para Etapa 3</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           ) : (
             <div className="text-xs text-emerald-700 font-semibold flex items-center gap-1">
-              <CheckCircle2 className="w-4 h-4" /> Você chegou ao 8º estágio!
+              <CheckCircle2 className="w-4 h-4" /> Todos os 8 estágios explorados!
             </div>
           )}
         </div>

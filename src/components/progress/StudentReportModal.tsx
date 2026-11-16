@@ -107,11 +107,9 @@ export const StudentReportModal: React.FC<StudentReportModalProps> = ({
       ``,
       `RESUMO DE APROVEITAMENTO:`,
       `• Aproveitamento Geral: ${breakdown.totalPct}% de 100%`,
-      `• Módulos Teóricos: ${breakdown.theoryCompletedCount} de ${TOTAL_CURRICULUM_TOPICS} concluídos (${breakdown.theoryPct}% de 35% ponderado)`,
-      `• Estágios Explorados: ${breakdown.stagesCompletedCount} de ${TOTAL_STAGES}`,
+      `• Teoria & Estágios: Etapa 1 (${breakdown.theoryCompletedCount > 0 ? 'Concluída' : 'Pendente'}) e ${breakdown.stagesCompletedCount} de ${TOTAL_STAGES} estágios (${breakdown.theoryPct}% de 35% ponderado)`,
       `• Casos Clínicos Resolvidos: ${breakdown.casesCompletedCount} de ${TOTAL_CLINICAL_CASES} (${breakdown.casesPct}% de 35% ponderado)`,
       `• Exercícios de Fixação: ${breakdown.quizAnsweredCount} respondidos com ${breakdown.quizCorrectCount} acertos (${breakdown.quizPct}% de 30% ponderado)`,
-      `• Termos no Dicionário Consultados: ${breakdown.dictionaryTermsCount}`,
       ``,
       `ENGAJAMENTO & GAMIFICAÇÃO:`,
       `• Patente Acadêmica: ${gameState?.currentRank.title || 'Iniciante'} (Nível ${gameState?.currentRank.level || 1})`,
@@ -342,7 +340,7 @@ export const StudentReportModal: React.FC<StudentReportModalProps> = ({
                     />
                   </div>
                   <p className="text-[11px] text-slate-600 leading-snug">
-                    {breakdown.theoryCompletedCount} de 6 tópicos e {breakdown.stagesCompletedCount} de 8 estágios explorados.
+                    Etapa 1 ({breakdown.theoryCompletedCount > 0 ? 'Concluída' : 'Pendente'}) e {breakdown.stagesCompletedCount} de 8 estágios explorados.
                   </p>
                 </div>
 
@@ -540,7 +538,7 @@ export const StudentReportModal: React.FC<StudentReportModalProps> = ({
                     <span>Critérios Mínimos para Certificação</span>
                   </div>
                   <p className="text-xs text-amber-900 leading-relaxed">
-                    Para emitir o certificado formal de conclusão da disciplina, explore os 8 estágios do ciclo vital, solucione pelo menos 3 dos 4 casos clínicos e responda às questões formativas do quiz.
+                    Para emitir o certificado formal de conclusão da disciplina, conclua a Etapa 1 (Fundamentos), marque os 8 estágios do ciclo vital, solucione pelo menos 3 dos 4 casos clínicos e atinja 70%+ nas questões formativas do quiz.
                   </p>
                   <p className="text-xs text-amber-950 font-bold">
                     Pendência atual: {eligibility.reason}

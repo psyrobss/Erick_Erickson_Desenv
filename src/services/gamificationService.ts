@@ -125,12 +125,12 @@ export const ALL_BADGES: Badge[] = [
   },
   {
     id: 'dicionario-vivo',
-    title: 'Vocabulário Psicanalítico',
-    description: 'Consultou pelo menos 5 conceitos teóricos fundamentais no dicionário integrado.',
+    title: 'Base Epigenética Sólida',
+    description: 'Concluiu a Etapa 1 de Fundamentos compreendendo o princípio epigenético e o conceito de crise.',
     icon: '📖',
-    category: 'dedicacao',
-    xpReward: 40,
-    requirement: 'Examinar 5 termos no glossário.',
+    category: 'teoria',
+    xpReward: 50,
+    requirement: 'Concluir a Etapa 1 (Fundamentos) da trilha guiada.',
   },
   {
     id: 'honra-ufrn',
@@ -151,12 +151,12 @@ export function checkUnlockedBadges(progress: StudentProgress, totalProgressPct:
 
   const completedStages = progress.completedTopics.filter((t) => t.startsWith('estagio-')).length;
   const completedTopics = progress.completedTopics.filter((t) => t.startsWith('topico-')).length;
+  const hasFundamentals = progress.completedTopics.includes('fundamentos-etapa-1') || completedTopics > 0;
   const casesCount = Object.keys(progress.caseDecisions || {}).length;
-  const dictCount = (progress.reviewedDictionaryTerms || []).length;
   const hasStage5 = progress.completedTopics.includes('estagio-5') || progress.completedTopics.includes('topico-adolescencia');
 
   // 1. Primeiro Passo
-  if (completedStages > 0 || completedTopics > 0) {
+  if (completedStages > 0 || hasFundamentals) {
     unlocked.push('primeiro-passo');
   }
 
@@ -180,8 +180,8 @@ export function checkUnlockedBadges(progress: StudentProgress, totalProgressPct:
     unlocked.push('gabarito-quiz');
   }
 
-  // 6. Dicionário Vivo (pelo menos 5 termos)
-  if (dictCount >= 5) {
+  // 6. Base Epigenética Sólida (Etapa 1 concluída)
+  if (hasFundamentals) {
     unlocked.push('dicionario-vivo');
   }
 
@@ -214,16 +214,15 @@ export function calculateGamificationState(
 
   const completedStages = progress.completedTopics.filter((t) => t.startsWith('estagio-')).length;
   const completedTopics = progress.completedTopics.filter((t) => t.startsWith('topico-')).length;
+  const hasFundamentals = progress.completedTopics.includes('fundamentos-etapa-1') || completedTopics > 0;
   const casesCount = Object.keys(progress.caseDecisions || {}).length;
-  const dictCount = (progress.reviewedDictionaryTerms || []).length;
   const correctQuiz = progress.quizScore || 0;
 
-  // Pontuações base
-  const stagesXP = completedStages * 25;       // até 200 XP
-  const topicsXP = completedTopics * 25;       // até 150 XP
-  const casesXP = casesCount * 65;             // até 260 XP
-  const dictXP = Math.min(dictCount, 10) * 10; // até 100 XP
-  const quizXP = correctQuiz * 35;             // até 420 XP
+  // Pontuações base alinhadas à Trilha Linear de 4 Etapas
+  const fundamentalsXP = hasFundamentals ? 150 : 0; // Etapa 1: 150 XP
+  const stagesXP = completedStages * 35;            // Etapa 2: até 280 XP
+  const casesXP = casesCount * 75;                  // Etapa 3: até 300 XP
+  const quizXP = correctQuiz * 40;                  // Etapa 4: até 480 XP
 
   // Badges desbloqueados
   const unlockedBadgeIds = checkUnlockedBadges(progress, totalProgressPct);
@@ -232,7 +231,7 @@ export function calculateGamificationState(
     return sum + (b ? b.xpReward : 0);
   }, 0);
 
-  const totalXP = stagesXP + topicsXP + casesXP + dictXP + quizXP + badgesXP;
+  const totalXP = fundamentalsXP + stagesXP + casesXP + quizXP + badgesXP;
 
   // Determinar Patente Atual
   let currentRank = ACADEMIC_RANKS[0];

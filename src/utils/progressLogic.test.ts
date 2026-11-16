@@ -6,7 +6,6 @@ import {
   calculateCompletionPercentage,
   checkCertificateEligibility,
   generateCertificateCode,
-  TOTAL_CURRICULUM_TOPICS,
   TOTAL_STAGES,
   TOTAL_CLINICAL_CASES,
 } from './progressLogic';
@@ -26,65 +25,87 @@ test('calculateCompletionPercentage returns 0 for empty progress', () => {
   assert.equal(calculateCompletionPercentage(p, 10), 0);
 });
 
-test('calculateDetailedBreakdown calculates balanced weights for theory, cases, and quiz', () => {
+test('calculateDetailedBreakdown awards full 35% for 4 clinical cases and 35% for theory (Etapa 1 + 8 stages)', () => {
   const p = createDefaultProgress('João', '123456');
-  // 3 de 6 tópicos curriculares (50% de 20 = 10%)
-  p.completedTopics = ['topico-1', 'topico-2', 'topico-3'];
-  // 4 de 8 estágios (50% de 15 = 7.5%)
-  p.completedTopics.push('estagio-1', 'estagio-2', 'estagio-3', 'estagio-4');
-  // Teoria total = 10 + 7.5 = 17.5%
+  // Etapa 1 concluída (7%) + 4 de 8 estágios (50% de 28 = 14%) => Teoria = 21%
+  p.completedTopics = ['fundamentos-etapa-1', 'estagio-1', 'estagio-2', 'estagio-3', 'estagio-4'];
 
-  // 2 de 4 casos clínicos (50% de 25 = 12.5%)
-  p.caseDecisions = { 'caso-1': 'opt-a', 'caso-2': 'opt-b' };
-  // 5 termos de dicionário (100% de 10 = 10%)
-  p.reviewedDictionaryTerms = ['termo-1', 'termo-2', 'termo-3', 'termo-4', 'termo-5'];
-  // Casos total = 12.5 + 10 = 22.5%
+  // Todos os 4 casos clínicos resolvidos => Casos = 35% de 35%
+  p.caseDecisions = { 'caso-1': 'opt-a', 'caso-2': 'opt-b', 'caso-3': 'opt-c', 'caso-4': 'opt-d' };
 
-  // Quiz: 5 de 10 perguntas respondidas (50% de 15 = 7.5%)
+  // Quiz: 5 de 10 perguntas respondidas (7.5%) e 5 corretas (7.5%) => Quiz = 15%
   p.quizAnswers = { q1: 'a', q2: 'b', q3: 'c', q4: 'd', q5: 'a' };
-  // 5 corretas (5 / 10 = 50% de 15 = 7.5%)
   p.quizScore = 5;
-  // Quiz total = 7.5 + 7.5 = 15%
 
   const breakdown = calculateDetailedBreakdown(p, 10);
-  assert.equal(breakdown.theoryPct, 17.5);
-  assert.equal(breakdown.casesPct, 22.5);
+  assert.equal(breakdown.theoryPct, 21);
+  assert.equal(breakdown.casesPct, 35);
   assert.equal(breakdown.quizPct, 15);
-  // Total = 17.5 + 22.5 + 15 = 55%
-  assert.equal(breakdown.totalPct, 55);
-  assert.equal(calculateCompletionPercentage(p, 10), 55);
+  assert.equal(breakdown.totalPct, 71);
+  assert.equal(calculateCompletionPercentage(p, 10), 71);
 });
 
-test('checkCertificateEligibility enforces curriculum completion, cases, and quiz score threshold', () => {
+test('completing all 4 steps in the linear track yields exactly 100% with zero pending tasks', () => {
+  const p = createDefaultProgress('Ana', '2026001');
+  p.completedTopics = [
+    'fundamentos-etapa-1',
+    ...Array.from({ length: TOTAL_STAGES }, (_, i) => `estagio-${i + 1}`),
+  ];
+  p.caseDecisions = {
+    'caso-lucas-16': 'opt-1-3',
+    'caso-beatriz-19': 'opt-2-3',
+    'caso-mateus-15': 'opt-3-3',
+    'caso-juliana-17': 'opt-4-3',
+  };
+  p.quizAnswers = Object.fromEntries(Array.from({ length: 12 }, (_, i) => [`q-${i + 1}`, 'opt-b']));
+  p.quizScore = 12;
+
+  const breakdown = calculateDetailedBreakdown(p, 12);
+  assert.equal(breakdown.theoryPct, 35);
+  assert.equal(breakdown.casesPct, 35);
+  assert.equal(breakdown.quizPct, 30);
+  assert.equal(breakdown.totalPct, 100);
+  assert.equal(breakdown.pendingTasks.length, 0);
+  assert.equal(checkCertificateEligibility(p, 12).eligible, true);
+});
+
+test('checkCertificateEligibility enforces Etapa 1, 8 stages, 3+ cases, and 70%+ quiz score', () => {
   const p = createDefaultProgress('Aluno', '2026001');
-  
-  // 1. Início: não elegível
+
+  // 1. Início: Etapa 1 pendente
   const res1 = checkCertificateEligibility(p, 12);
   assert.equal(res1.eligible, false);
+  assert.ok(res1.reason?.includes('Etapa 1'));
 
-  // 2. Conclui todos os 6 tópicos teóricos, mas ainda sem casos nem quiz
-  p.completedTopics = Array.from({ length: TOTAL_CURRICULUM_TOPICS }, (_, i) => `topico-${i + 1}`);
+  // 2. Conclui Etapa 1, mas sem estágios
+  p.completedTopics = ['fundamentos-etapa-1'];
   const res2 = checkCertificateEligibility(p, 12);
   assert.equal(res2.eligible, false);
-  assert.ok(res2.reason?.includes('estudos de caso clínico'));
+  assert.ok(res2.reason?.includes('8 estágios'));
 
-  // 3. Conclui 3 dos 4 casos clínicos
-  p.caseDecisions = { 'caso-1': 'a', 'caso-2': 'b', 'caso-3': 'c' };
+  // 3. Conclui os 8 estágios, mas sem casos clínicos
+  p.completedTopics.push(...Array.from({ length: TOTAL_STAGES }, (_, i) => `estagio-${i + 1}`));
   const res3 = checkCertificateEligibility(p, 12);
   assert.equal(res3.eligible, false);
-  assert.ok(res3.reason?.includes('quiz'));
+  assert.ok(res3.reason?.includes('caso clínico'));
 
-  // 4. Responde 6 questões do quiz, porém com acertos insuficientes (apenas 2 acertos = 33% < 70%)
-  p.quizAnswers = { q1: 'a', q2: 'b', q3: 'c', q4: 'd', q5: 'e', q6: 'f' };
-  p.quizScore = 2;
+  // 4. Conclui 3 dos 4 casos clínicos
+  p.caseDecisions = { 'caso-1': 'a', 'caso-2': 'b', 'caso-3': 'c' };
   const res4 = checkCertificateEligibility(p, 12);
   assert.equal(res4.eligible, false);
-  assert.ok(res4.reason?.includes('70%'));
+  assert.ok(res4.reason?.includes('quiz'));
 
-  // 5. Aumenta os acertos para 5 de 6 questões (83.3% >= 70%)
-  p.quizScore = 5;
+  // 5. Responde 6 questões do quiz, porém com acertos insuficientes (apenas 2 acertos = 33% < 70%)
+  p.quizAnswers = { q1: 'a', q2: 'b', q3: 'c', q4: 'd', q5: 'e', q6: 'f' };
+  p.quizScore = 2;
   const res5 = checkCertificateEligibility(p, 12);
-  assert.equal(res5.eligible, true);
+  assert.equal(res5.eligible, false);
+  assert.ok(res5.reason?.includes('70%'));
+
+  // 6. Aumenta os acertos para 5 de 6 questões (83.3% >= 70%)
+  p.quizScore = 5;
+  const res6 = checkCertificateEligibility(p, 12);
+  assert.equal(res6.eligible, true);
 });
 
 test('generateCertificateCode creates distinct formatted code with name and matricula', () => {

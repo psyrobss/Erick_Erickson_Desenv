@@ -87,7 +87,7 @@ export const Step4EvaluationReport: React.FC<Step4EvaluationReportProps> = ({
             {breakdown.theoryPct}% <span className="text-xs font-normal text-slate-500 font-sans">de 35%</span>
           </div>
           <div className="text-xs text-indigo-900/80">
-            {breakdown.stagesCompletedCount} de 8 estágios explorados
+            Etapa 1 ({breakdown.theoryCompletedCount > 0 ? 'Concluída' : 'Pendente'}) · {breakdown.stagesCompletedCount} de 8 estágios
           </div>
         </div>
 
@@ -130,10 +130,12 @@ export const Step4EvaluationReport: React.FC<Step4EvaluationReportProps> = ({
             </h2>
           </div>
 
-          {/* Navegador de Perguntas */}
+          {/* Navegador Completo das 12 Perguntas */}
           <div className="flex items-center gap-1 flex-wrap">
-            {QUIZ_QUESTIONS_DATA.slice(0, 6).map((q, idx) => {
-              const isAnswered = Boolean(quizAnswers[q.id]);
+            {QUIZ_QUESTIONS_DATA.map((q, idx) => {
+              const chosenId = quizAnswers[q.id];
+              const isAnswered = Boolean(chosenId);
+              const isRight = isAnswered && q.options.find((o) => o.id === chosenId)?.isCorrect;
               const isCurrent = idx === activeQuestionIndex;
               return (
                 <button
@@ -143,11 +145,14 @@ export const Step4EvaluationReport: React.FC<Step4EvaluationReportProps> = ({
                     setActiveQuestionIndex(idx);
                     soundService.playClick();
                   }}
+                  aria-label={`Ir para questão ${idx + 1}`}
                   className={`w-7 h-7 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all border ${
                     isCurrent
-                      ? 'bg-indigo-700 text-white border-indigo-700'
+                      ? 'bg-indigo-700 text-white border-indigo-700 ring-2 ring-indigo-300'
                       : isAnswered
-                      ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                      ? isRight
+                        ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                        : 'bg-rose-50 text-rose-800 border-rose-300'
                       : 'bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200'
                   }`}
                 >
@@ -210,23 +215,52 @@ export const Step4EvaluationReport: React.FC<Step4EvaluationReportProps> = ({
           })}
         </div>
 
-        {/* Próxima Questão */}
-        <div className="pt-2 flex items-center justify-between border-t border-slate-100">
+        {/* Navegação entre Questões */}
+        <div className="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-slate-100">
           <span className="text-xs text-slate-500 font-medium">
             {selectedOptionId ? '✓ Resposta salva!' : 'Clique em uma das alternativas acima.'}
           </span>
 
-          {activeQuestionIndex < QUIZ_QUESTIONS_DATA.length - 1 && (
-            <button
-              type="button"
-              onClick={handleNextQuestion}
-              className="px-4 py-2 bg-indigo-700 hover:bg-indigo-800 text-white text-xs font-semibold rounded-xl cursor-pointer shadow-xs active:scale-95"
-            >
-              Próxima Questão →
-            </button>
-          )}
+          <div className="flex items-center gap-2 ml-auto">
+            {activeQuestionIndex > 0 && (
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveQuestionIndex(activeQuestionIndex - 1);
+                  soundService.playClick();
+                }}
+                className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl cursor-pointer transition-colors"
+              >
+                ← Anterior
+              </button>
+            )}
+
+            {activeQuestionIndex < QUIZ_QUESTIONS_DATA.length - 1 && (
+              <button
+                type="button"
+                onClick={handleNextQuestion}
+                className="px-4 py-2 bg-indigo-700 hover:bg-indigo-800 text-white text-xs font-semibold rounded-xl cursor-pointer shadow-xs active:scale-95"
+              >
+                Próxima Questão →
+              </button>
+            )}
+          </div>
         </div>
       </div>
+
+      {/* Checklist transparente de pendências restantes (se houver) */}
+      {breakdown.pendingTasks.length > 0 && (
+        <div className="bg-amber-50/80 border border-amber-200 rounded-2xl p-5 space-y-2">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-amber-900">
+            Para atingir 100% de aproveitamento na trilha, ainda falta:
+          </h3>
+          <ul className="list-disc list-inside text-xs sm:text-sm text-amber-950 space-y-1">
+            {breakdown.pendingTasks.map((task, idx) => (
+              <li key={idx}>{task}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* 4. Emissão de Relatório Oficial e PDF */}
       <div className="bg-gradient-to-br from-indigo-900 to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-lg space-y-4">

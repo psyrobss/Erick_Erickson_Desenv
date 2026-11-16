@@ -52,7 +52,7 @@ export const GuidedLinearTrack: React.FC<GuidedLinearTrackProps> = ({
       title: 'Fundamentos',
       subtitle: 'O que é a Teoria & Crise',
       icon: BookOpen,
-      isCompleted: progress.completedTopics.includes('fundamentos-etapa-1'),
+      isCompleted: breakdown.theoryCompletedCount > 0,
     },
     {
       number: 2,
@@ -73,7 +73,7 @@ export const GuidedLinearTrack: React.FC<GuidedLinearTrackProps> = ({
       title: 'Avaliação & Relatório',
       subtitle: 'Fixação & Baixar PDF',
       icon: Award,
-      isCompleted: breakdown.totalPct >= 70,
+      isCompleted: breakdown.quizAnsweredCount >= 12 && (breakdown.quizCorrectCount / 12) >= 0.7,
     },
   ];
 
